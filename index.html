@@ -32,6 +32,7 @@
           <button class="calculator-tab active" type="button" role="tab" aria-selected="true" data-target="interval">施術間隔</button>
           <button class="calculator-tab" type="button" role="tab" aria-selected="false" data-target="restriction">その他間隔</button>
           <button class="calculator-tab" type="button" role="tab" aria-selected="false" data-target="drug">薬剤使用量</button>
+          <button class="calculator-tab" type="button" role="tab" aria-selected="false" data-target="recipe">点滴・注射レシピ</button>
        
         </div>
 
@@ -172,10 +173,39 @@
 
         </section>
 
+        <section class="calculator-panel" data-panel="recipe" hidden>
+          <div class="panel-header"><div>
+            <p class="panel-kicker">DRIP &amp; INJECTION RECIPE</p>
+            <h3>点滴・注射レシピ</h3>
+          </div></div>
+          <div class="calculator-card">
+            <div class="restriction-grid">
+              <label class="field-group" for="recipeClinic">
+                <span class="field-number">01</span><span class="field-label">院</span>
+                <select id="recipeClinic"><option>新宿院</option><option>心斎橋院</option><option>福岡院</option></select>
+              </label>
+              <label class="field-group" for="recipeMenu">
+                <span class="field-number">02</span><span class="field-label">点滴・注射メニュー</span>
+                <select id="recipeMenu"><option value="">選択してください</option></select>
+              </label>
+            </div>
+            <div class="result-box is-neutral" id="recipeResultBox" aria-live="polite">
+              <p class="result-label">RECIPE</p>
+              <p class="result-title" id="recipeTitle">メニューを選択してください</p>
+              <p class="result-note" id="recipePrice"></p>
+              <p class="result-note" id="recipeIngredients">院・メニューを選択すると、成分と料金が表示されます。</p>
+            </div>
+          </div>
+          <div class="notice-card compact"><p class="notice-title">レシピについて</p>
+            <p>心斎橋院・福岡院の成分が空欄の項目は、新宿院の内容を反映しています。</p>
+          </div>
+        </section>
+
 </section>
     </main>
   </div>
   <script src="js/common.js"></script>
   <script src="js/interval.js"></script>
+  <script src="js/recipes.js"></script>
 </body>
 </html>
