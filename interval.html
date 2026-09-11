@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>施術間隔計算 | 媒体チーム</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/interval.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+        <aside class="sidebar collapsed"></aside>
+    
+        <main class="main-content">
+         <!-- Top Bar -->
+        <header class="top-bar">
+      
+        </header>
+
+
+      <section class="tool-page">
+        <div class="page-heading">
+          <p class="eyebrow">TREATMENT INTERVAL</p>
+          <h2><span class="title-icon"><img src="icons/interval.svg" alt="アイコン"></span>施術間隔計算</h2>
+          <p>施術、外科オペやアートメイク、薬剤などの条件を選ぶと、必要な間隔を確認できます。</p>
+        </div>
+
+        <div class="calculator-tabs" role="tablist" aria-label="計算機を選択">
+
+          <button class="calculator-tab active" type="button" role="tab" aria-selected="true" data-target="interval">施術間隔</button>
+          <button class="calculator-tab" type="button" role="tab" aria-selected="false" data-target="restriction">その他間隔</button>
+          <button class="calculator-tab" type="button" role="tab" aria-selected="false" data-target="drug">薬剤使用量</button>
+       
+        </div>
+
+        <section class="calculator-panel" data-panel="interval">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">INTERVAL CHECK</p>
+              <h3>施術同士の間隔</h3>
+            </div>
+          </div>
+
+          <div class="calculator-card">
+            <div class="select-grid">
+              <label class="field-group" for="beforeTreatment">
+                <span class="field-number">01</span>
+                <span class="field-label">先に受ける施術</span>
+                <select id="beforeTreatment"><option value="">選択してください</option></select>
+              </label>
+
+              <div class="direction-mark" aria-hidden="true">→</div>
+
+              <label class="field-group" for="afterTreatment">
+                <span class="field-number">02</span>
+                <span class="field-label">後に受ける施術</span>
+                <select id="afterTreatment"><option value="">選択してください</option></select>
+              </label>
+            </div>
+
+            <div id="resultBox" class="result-box is-neutral" aria-live="polite">
+              <p class="result-label">RESULT</p>
+              <p id="resultText" class="result-title">施術を選択してください</p>
+              <p id="resultNote" class="result-note">先に受ける施術・後に受ける施術の両方を選択してください。</p>
+            </div>
+          </div>
+
+          <div class="notice-card">
+            <p class="notice-title">確認事項</p>
+            <ul>
+              <li>施術内容や肌状態により、実際の案内が異なる場合があります。迷う場合は現場確認してください。</li>
+              <li>ピーリングは1日でも空いた場合、次回まで2週間の間隔が必要です。</li>
+              <li>ボトックス（目尻・エラ・口角）とジャルプロは同日不可、前後1週間空けてください。</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="calculator-panel" data-panel="restriction" hidden>
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">OTHER RESTRICTIONS</p>
+              <h3>その他施術制限</h3>
+            </div>
+          </div>
+
+          <div class="calculator-card">
+            <div class="restriction-grid">
+              <label class="field-group" for="restrictionCategory">
+                <span class="field-number">01</span>
+                <span class="field-label">カテゴリ</span>
+                <select id="restrictionCategory"><option value="">選択してください</option></select>
+              </label>
+
+              <label class="field-group" for="restrictionItem">
+                <span class="field-number">02</span>
+                <span class="field-label">項目</span>
+                <select id="restrictionItem"><option value="">先にカテゴリを選択してください</option></select>
+              </label>
+            </div>
+
+            <div id="restrictionResultBox" class="result-box is-neutral" aria-live="polite">
+              <p class="result-label">RESULT</p>
+              <p id="restrictionResultText" class="result-title">項目を選択してください</p>
+              <p id="restrictionResultNote" class="result-note">カテゴリ・項目を選択すると、必要な間隔が表示されます。</p>
+            </div>
+          </div>
+        </section>
+      
+
+        <section class="calculator-panel" data-panel="drug" hidden>
+          <div class="panel-header">
+    <div>
+      <p class="panel-kicker">MEDICATION GUIDE</p>
+      <h3>使用薬剤量</h3>
+    </div>
+
+          </div>
+
+  <div class="calculator-card">
+
+    <div class="selection-flow">
+
+      <label class="field-group" for="drugTreatment">
+        <span class="field-number">01</span>
+        <span class="field-label">施術</span>
+
+        <select id="drugTreatment">
+          <option value="">選択してください</option>
+        </select>
+      </label>
+
+      <div class="flow-line" aria-hidden="true">
+        <span></span>
+      </div>
+
+      <label class="field-group" for="drugName">
+        <span class="field-number">02</span>
+        <span class="field-label">薬剤</span>
+
+        <select id="drugName">
+          <option value="">先に施術を選択してください</option>
+        </select>
+      </label>
+
+    </div>
+
+  <div class="drug-result-box" id="drugResultBox" aria-live="polite">
+
+      <div class="result-heading">
+        <div>
+          <p class="result-label">DOSAGE RESULT</p>
+          <p class="drug-result-title"> 薬剤を選択してください</p>
+        </div>
+      </div>
+
+      <div id="drugResultList" class="drug-result-list">
+          <p class="empty-message">施術・薬剤を選択すると、使用量が表示されます。</p>
+      </div>
+      </div>
+
+  </div>
+
+  <div class="notice-card compact">
+    <p class="notice-title">使い方</p>
+      <p>
+        施術を選択すると対応する薬剤だけが表示されます。
+       院ごとに使用量が異なる項目は、結果内の注記も確認してください。
+      </p>
+     </div>
+
+        </section>
+
+</section>
+    </main>
+  </div>
+  <script src="js/common.js"></script>
+  <script src="js/interval.js"></script>
+</body>
+</html>
