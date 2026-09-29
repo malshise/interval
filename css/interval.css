@@ -1,8 +1,13 @@
 /* ===========================
    Interval / Restriction Page
 =========================== */
+.main-content {
+   width:100%;
+   min-width:0;
+}
 .tool-page{
    padding:38px;
+   width:100%;
    max-width:1320px;
    margin:0 auto;
 }
@@ -31,7 +36,7 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
 
-    width: min(100%, 560px);
+    width: min(100%, 720px);
     margin-bottom: 24px;
     padding: 6px;
 
@@ -48,7 +53,9 @@
 .calculator-tab {
     width: 100%;
     min-width: 0;
-    height: 42px;
+    min-height: 44px;
+    height: auto;
+    line-height: 1.5;
     padding: 0 16px;
 
     border: none;
@@ -127,6 +134,7 @@
 }
 .field-group{
    display:block;
+   min-width:0;
 }
 .field-number{
    display:block;
@@ -145,6 +153,11 @@
 }
 .field-group select{
    width:100%;
+   min-width:0;
+   max-width:100%;
+   font:inherit;
+   font-size:16px;
+   text-overflow:ellipsis;
    height:50px;
    padding:0 16px;
    border:1px solid var(--border);
@@ -366,7 +379,7 @@
     .select-grid,
     .restriction-grid,
     .selection-flow {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .direction-mark {
@@ -384,5 +397,86 @@
     }
 
     .drug-result-list {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }}
+
+/* Keep long treatment names and recipes within their cards. */
+.result-title,
+.drug-result-title,
+.result-note,
+.drug-result-item,
+.notice-card {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+    .tool-page {
+        padding: 24px 12px;
+    }
+
+    .page-heading {
+        margin-bottom: 20px;
+    }
+
+    .page-heading h2 {
+        font-size: 24px;
+    }
+
+    .calculator-tabs {
+        gap: 4px;
+        padding: 4px;
+        margin-bottom: 18px;
+    }
+
+    .calculator-tab {
+        padding: 8px 2px;
+        font-size: 11px;
+        overflow-wrap: anywhere;
+    }
+
+    .calculator-panel {
+        padding: 16px 12px;
+        border-radius: 16px;
+    }
+
+    .panel-header {
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+    }
+
+    .panel-header h3,
+    .result-title,
+    .drug-result-title {
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+    .calculator-card {
+        padding: 14px 12px;
+        border-radius: 14px;
+    }
+
+    .select-grid,
+    .restriction-grid,
+    .selection-flow {
+        gap: 12px;
+    }
+
+    .field-group select {
+        padding: 0 10px;
+    }
+
+    .result-box,
+    .drug-result-box {
+        margin-top: 18px;
+        padding: 16px 12px;
+    }
+
+    .drug-result-item {
+        padding: 12px;
+    }
+
+    .notice-card {
+        padding: 14px;
+    }
+}
